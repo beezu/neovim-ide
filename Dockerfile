@@ -14,8 +14,10 @@ RUN make CMAKE_BUILD_TYPE=Release && make install
 RUN mkdir -p /root/.config && git clone https://github.com/beezu/neovim-ide /root/.config/nvim
 # Run PackerSync
 RUN nvim --headless -c 'PackerSync' -c 'sleep 20' -c 'qa'
-# Set up TreeSitter, giving it more than enough time to build
-RUN nvim --headless -c 'TSUpdate' -c 'sleep 400' -c 'qa'
+# Rerun PackerSync to install remaining plugins
+RUN nvim --headless -c 'PackerSync' -c 'sleep 20' -c 'qa'
+# Set up TreeSitter
+RUN nvim --headless -c 'TSUpdate' -c 'sleep 180' -c 'qa'
 
 ###############
 #  Container  #
