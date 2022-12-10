@@ -12,9 +12,11 @@ RUN git checkout tags/v0.8.1
 RUN make CMAKE_BUILD_TYPE=Release && make install
 # Set up plugins lua file
 RUN mkdir -p /root/.config && git clone https://github.com/beezu/neovim-ide /root/.config/nvim
+WORKDIR /root/.config/nvim
+RUN git checkout No_LSP
 # Run PackerSync
 RUN nvim --headless -c 'PackerSync' -c 'sleep 20' -c 'qa'
-# Set up TreeSitter, giving it more than enough time to build
+# Set up TreeSitter
 RUN nvim --headless -c 'TSUpdate' -c 'sleep 400' -c 'qa'
 
 ###############
