@@ -124,22 +124,6 @@ return packer.startup(function(use)
     "saadparwaiz1/cmp_luasnip",
     commit = "18095520391186d634a0045dacaa346291096566",
   })
-  use({          -- for lsp
-    "hrsh7th/cmp-nvim-lsp",
-    commit = "59224771f91b86d1de12570b4070fe4ad7cd1eeb",
-  })
-  use({          -- for lsp
-    "hrsh7th/cmp-nvim-lua",
-    commit = "d276254e7198ab7d00f117e88e223b4bd8c02d21",
-  })
-  use({          -- Crates.io dependency helper + crates completions
-		"saecki/crates.nvim",
-    commit = "e11e27864428a68b25e43b833e9081e350a38d96",
-		event = { "BufRead Cargo.toml" },
-		config = function()
-			require("crates").setup()
-		end,
-	})
   use({          -- Autopairs, integrates with both cmp and treesitter
     "windwp/nvim-autopairs",
     commit = "6b6e35fc9aca1030a74cc022220bc22ea6c5daf4",
@@ -153,20 +137,6 @@ return packer.startup(function(use)
   use({          -- a bunch of snippets to use
     "rafamadriz/friendly-snippets",
     commit = "ef8caa5002e53977779ce8ab18a9c393ed624386",
-  })
-
-	-- LSP
-  use({          -- enable LSP
-    "neovim/nvim-lspconfig",
-    commit = "ea5744f9243ec25a178a0bc403a4c8203ecc4f23",
-  })
-  use({          -- simple to use language server installer
-    "williamboman/mason.nvim",
-    commit = "9f84d49d33a790fb6d0fe23371c662cf77957ec5",
-  })
-	use({
-    "williamboman/mason-lspconfig.nvim",
-    commit = "a1e2219ecea273d52b1ce1d527dd3a93cfe5b396",
   })
   use({          -- for formatters and linters
     "jose-elias-alvarez/null-ls.nvim",
@@ -220,18 +190,6 @@ return packer.startup(function(use)
     "lewis6991/gitsigns.nvim",
     commit = "9ff7dfb051e5104088ff80556203634fc8f8546d",
   })
-
-	-- Debugger --
-	use({
-    "mfussenegger/nvim-dap",
-    commit = "61643680dcb771a29073cd432894e2f81a7c2ae3",
-  })
-	-- Debugger UI --
-	use({
-		"rcarriga/nvim-dap-ui",
-    commit = "69a39820656af5f286d2ea0664f0f7bb52782c4f",
-		requires = { "mfussenegger/nvim-dap" },
-	})
 	-- Automatically set up your configuration after cloning packer.nvim
 	if PACKER_BOOTSTRAP then
 		require("packer").sync()
