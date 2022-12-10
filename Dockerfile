@@ -15,7 +15,9 @@ RUN mkdir -p /root/.config && git clone https://github.com/beezu/neovim-ide /roo
 WORKDIR /root/.config/nvim
 RUN git checkout No_LSP
 # Run PackerSync
-RUN nvim --headless -c 'PackerSync' -c 'sleep 20' -c 'qa'
+RUN nvim --headless -c 'PackerSync' -c 'sleep 30' -c 'qa'
+# Rerun PackerSync to install remaining plugins
+RUN nvim --headless -c 'PackerSync' -c 'sleep 30' -c 'qa'
 # Set up TreeSitter
 RUN nvim --headless -c 'TSUpdate' -c 'sleep 400' -c 'qa'
 
