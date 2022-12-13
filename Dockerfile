@@ -8,11 +8,9 @@ RUN apk add --no-cache --update git gcc cmake make libtool autoconf automake \
   ninja pkgconfig gettext gettext-dev musl-dev luajit g++ openssl luarocks \
   unzip libintl wget npm nodejs
 # Install Rust
-RUN curl https://sh.rustup.rs -sSf | sh -s -- -y --default-toolchain nightly
+RUN curl https://sh.rustup.rs -sSf | sh -s -- -y
 # Include Rust on PATH
 ENV PATH="/root/.cargo/bin:${PATH}"
-# Install dprint for Rust code formatting
-RUN cargo +nightly install -Z sparse-registry --locked dprint
 # Build Neovim from source
 RUN git clone https://github.com/neovim/neovim
 WORKDIR /neovim
@@ -44,7 +42,7 @@ FROM alpine:3.17.0
 RUN apk add --no-cache --update fzf gettext git ripgrep npm nodejs curl && \
   mkdir /project
 # Install Rust
-RUN curl https://sh.rustup.rs -sSf | sh -s -- y
+RUN curl https://sh.rustup.rs -sSf | sh -s -- -y
 # Include Rust on PATH
 ENV PATH="/root/.cargo/bin:${PATH}"
 # Manually install rust-analyzer on ARM only since it fails to install via mason
@@ -52,6 +50,8 @@ RUN if [[ $(uname -a | awk '{ print $(NF-1) }') == aarch64 ]] ; \
   then rustup component add rust-analyzer && \
   ln -s $(rustup which --toolchain stable rust-analzyer) /root/.cargo/bin ; \
   fi
+# Install dprint for Rust code formatting
+RUN npm install -g dprint
 # Set default directory where volume will be mounted
 WORKDIR /project
 # Copy relevant files from build environment
