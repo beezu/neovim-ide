@@ -9,8 +9,8 @@ local servers = {
 	-- "yamlls",
 	"rust_analyzer",
 	"powershell_es",
-  "yamlls",
-  "dockerls"
+	"yamlls",
+	"dockerls",
 }
 
 local settings = {
@@ -29,7 +29,7 @@ local settings = {
 require("mason").setup(settings)
 require("mason-lspconfig").setup({
 	ensure_installed = servers,
-	automatic_installation = true,
+	automatic_installation = false,
 })
 
 local lspconfig_status_ok, lspconfig = pcall(require, "lspconfig")
