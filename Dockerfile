@@ -32,6 +32,7 @@ RUN nvim --headless -c 'MasonInstall dockerfile-language-server json-lsp \
 FROM alpine:3.17.0
 # Apk dependencies
 ARG TARGETARCH
+ARG RUSTPATH
 # Runtime dependencies
 RUN apk add --no-cache --update fzf gettext git ripgrep npm nodejs curl && \
   mkdir /project
@@ -43,15 +44,12 @@ ENV PATH="/root/.cargo/bin:${PATH}"
 RUN npm install -g dprint
 # Manually install rust-analyzer
 RUN rustup component add rust-analyzer
-RUN if [[ $TARGETARCH == aarch64 ]] ; \
-  then \
-  ln -s /root/.rustup/toolchains/stable-aarch64-unknown-linux-musl/bin/rust-analyzer \
-  /root/.cargo/bin ; \
-  elif [[ $TARGETARCH == amd64 ]] ;\
-  then \
-  ln -s /root/.rustup/toolchains/stable-x86_64-unknown-linux-musl/bin/rust-analyzer \
-  /root/.cargo/bin ; \
-  fi
+RUN case ${TARGETARCH} in \
+  aarch64) RUSTPATH=stable-aarch64-unknown-linux-musl ;; \
+  amd64) RUSTPATH=stable-x86_64-unknown-linux-musl ;; \
+  *) exit 1 ;; \
+  esac && \
+  ln -s /root/.rustup/toolchains/${RUSTPATH}/bin/rust-analzyer
 # Set default directory where volume will be mounted
 WORKDIR /project
 # Copy relevant files from build environment
