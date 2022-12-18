@@ -19,7 +19,7 @@ RUN nvim --headless -c 'PackerSync' -c 'sleep 20' -c 'qa'
 # Rerun PackerSync to install remaining plugins
 RUN nvim --headless -c 'PackerSync' -c 'sleep 20' -c 'qa'
 # Set up TreeSitter
-RUN nvim --headless -c 'TSUpdate' -c 'sleep 180' -c 'qa'
+RUN nvim --headless -c 'TSUpdate' -c 'sleep 60' -c 'qa'
 
 ###############
 #  Container  #
