@@ -43,7 +43,7 @@ packer.init({
 return packer.startup(function(use)
 	-- Core --
 	use({ "wbthomason/packer.nvim", -- Have packer manage itself
-    commit = "6afb67460283f0e990d35d229fd38fdc04063e0a",
+    commit = "64ae65fea395d8dc461e3884688f340dd43950ba",
   })
   use({          -- Useful lua functions used by lots of plugins
     "nvim-lua/plenary.nvim",
@@ -59,11 +59,11 @@ return packer.startup(function(use)
   --[[ }) ]]
   use({          -- Lua-based file explorer
     "nvim-tree/nvim-tree.lua",
-    commit = "68a2a0971eb50f13e4d54498a2add73f131b9a85",
+    commit = "29788cc32a153e42b2fe48344d315da8367fc6fa",
   })
   use({          -- Allows persistent and toggle-able terminals within nvim
     "akinsho/toggleterm.nvim",
-    commit = "3ba683827c623affb4d9aa518e97b34db2623093",
+    commit = "b02a1674bd0010d7982b056fd3df4f717ff8a57a",
   })
 	-- use({ "lewis6991/impatient.nvim" }) -- Speeds up loading nvim lua modules
 	-- use({ "goolord/alpha-nvim" }) -- Greeter for nvim
@@ -78,35 +78,29 @@ return packer.startup(function(use)
     commit = "25ef93ac5a87526111f43e5110675032dbcacf56",
   })
 
-  --[[ use({          -- Project management? Telescope integration too ]]
-  --[[   "ahmedkhalf/project.nvim", ]]
-  --[[   commit = "", ]]
-  --[[ }) ]]
-
-	-- Theming --
-	-- Colorschemes
-  use({          --Includes several themes, see website
+  -- Theme --
+  use({
     "EdenEast/nightfox.nvim",
-    commit = "741366250cff3aa7b85d6588ffc9db60ebbfdcc9",
+    commit = "9c3756ae21743c9634923cea788c4cca0eafccf2",
   })
 
 	-- Statusline
 	use({
     "feline-nvim/feline.nvim",
-    commit = "6d4e3f934bffaa1893a690cd9b8f8b584ef0a7ea",
+    commit = "573e6d1e213de976256c84e1cb2f55665549b828",
   })
 
 	-- Characters
   use({          -- Adds NerdFont devicon support to Vim for plugins like treesitter to use. Lua fork of Ryanoasis
     "kyazdani42/nvim-web-devicons",
-    commit = "3b1b794bc17b7ac3df3ae471f1c18f18d1a0f958",
+    commit = "05e1072f63f6c194ac6e867b567e6b437d3d4622",
   })
 
 	-- Completions and Linting --
 	-- Cmp
   use({          -- The completion plugin
     "hrsh7th/nvim-cmp",
-    commit = "8a9e8a89eec87f86b6245d77f313a040a94081c1",
+    commit = "8bbaeda725d5db6e4e1be2867a64b43bf547cf06",
   })
   use({          -- buffer completions
     "hrsh7th/cmp-buffer",
@@ -118,7 +112,7 @@ return packer.startup(function(use)
   })
   use({          -- cmdline completions
     "hrsh7th/cmp-cmdline",
-    commit = "8bc9c4a34b223888b7ffbe45c4fe39a7bee5b74d",
+    commit = "23c51b2a3c00f6abc4e922dbd7c3b9aca6992063",
   })
   use({          -- snippet completions
     "saadparwaiz1/cmp_luasnip",
@@ -126,21 +120,21 @@ return packer.startup(function(use)
   })
   use({          -- Autopairs, integrates with both cmp and treesitter
     "windwp/nvim-autopairs",
-    commit = "6b6e35fc9aca1030a74cc022220bc22ea6c5daf4",
+    commit = "b5994e6547d64f781cfca853a1aa6174d238fe0e",
   })
 
 	-- Snippets
   use({          --snippet engine
     "L3MON4D3/LuaSnip",
-    commit = "09ce9a70bd787d4ce188f2de1390f656f119347c",
+    commit = "8b25e74761eead3dc47ce04b5e017fd23da7ad7e",
   })
   use({          -- a bunch of snippets to use
     "rafamadriz/friendly-snippets",
-    commit = "ef8caa5002e53977779ce8ab18a9c393ed624386",
+    commit = "2379c6245be10fbf0ebd057f0d1f89fe356bf8bc",
   })
   use({          -- for formatters and linters
     "jose-elias-alvarez/null-ls.nvim",
-    commit = "07d4ed4c6b561914aafd787453a685598bec510f",
+    commit = "5d8e925d31d8ef8462832308c016ac4ace17597a",
   })
   use({          -- Highlights other uses of word for LSP
     "RRethy/vim-illuminate",
@@ -150,7 +144,7 @@ return packer.startup(function(use)
 	-- Misc
   use({          -- Auto indents lines, even blank ones
     "lukas-reineke/indent-blankline.nvim",
-    commit = "db7cbcb40cc00fc5d6074d7569fb37197705e7f6",
+    commit = "c4c203c3e8a595bc333abaf168fcb10c13ed5fb7",
   })
   use({          -- Smart commenting
     "numToStr/Comment.nvim",
@@ -164,7 +158,7 @@ return packer.startup(function(use)
 	-- Telescope search --
   use({          -- Telescope search
     "nvim-telescope/telescope.nvim",
-    commit = "7a4ffef931769c3fe7544214ed7ffde5852653f6",
+    commit = "cabf991b1d3996fa6f3232327fc649bbdf676496",
   })
   use({          -- Clipboard/Macro history, searchable with Telescope
 		"AckslD/nvim-neoclip.lua",
@@ -177,7 +171,7 @@ return packer.startup(function(use)
 	-- Treesitter --
   use({          -- better highlighting
 		"nvim-treesitter/nvim-treesitter",
-    commit = "be5ed65f7f4a2266447651d480215bcda04b8842",
+    commit = "ee095abeac5842943a94a27c0ca75c61e7c614a2",
 		run = ":TSUpdate",
 	})
   use({          -- Rainbow parentheses for treesitter
@@ -188,7 +182,7 @@ return packer.startup(function(use)
 	-- Git --
   use({          -- git decorations in nvim
     "lewis6991/gitsigns.nvim",
-    commit = "9ff7dfb051e5104088ff80556203634fc8f8546d",
+    commit = "71644a2907adc076f1c5e712f59d897f5197d5d6",
   })
 	-- Automatically set up your configuration after cloning packer.nvim
 	if PACKER_BOOTSTRAP then
