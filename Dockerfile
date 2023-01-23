@@ -10,7 +10,7 @@ RUN apk add --no-cache --update git gcc cmake make libtool autoconf automake \
 # Build Neovim from source
 RUN git clone https://github.com/neovim/neovim
 WORKDIR /neovim
-RUN git checkout tags/v0.8.1
+RUN git checkout tags/v0.8.2
 RUN make CMAKE_BUILD_TYPE=Release && make install
 # Download config
 RUN mkdir -p /root/.config && \
@@ -41,7 +41,7 @@ RUN curl https://sh.rustup.rs -sSf | sh -s -- -y
 # Include Rust on PATH
 ENV PATH="/root/.cargo/bin:${PATH}"
 # Install dprint for Rust code formatting
-RUN npm install -g dprint
+RUN curl -fsSL https://dprint.dev/install.sh | sh
 # Manually install rust-analyzer
 RUN rustup component add rust-analyzer
 RUN case ${TARGETARCH} in \
