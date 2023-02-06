@@ -1,16 +1,22 @@
+ARG TZ=America/Detroit
+ARG DEBIAN_FRONTEND=noninteractive
+
 #############
 #  Builder  #
 #############
 
-FROM alpine:3.17.0 AS builder
+FROM clowa/powershell-core AS builder
+SHELL ["/bin/bash", "-c"]
 # Build dependencies
-RUN apk add --no-cache --update git gcc cmake make libtool autoconf automake \
-  ninja pkgconfig gettext gettext-dev musl-dev luajit g++ openssl luarocks \
-  unzip libintl wget npm nodejs
+RUN apt-get update -qq && \
+  apt-get install -qq --yes ninja-build gettext libtool libtool-bin autoconf \
+  automake cmake g++ pkg-config unzip curl doxygen git nodejs npm && \
+  apt-get clean -qq --yes && \
+  rm -rf /var/lib/apt/lists/*
 # Build Neovim from source
 RUN git clone https://github.com/neovim/neovim
 WORKDIR /neovim
-RUN git checkout tags/v0.8.2
+RUN git checkout tags/v0.8.3
 RUN make CMAKE_BUILD_TYPE=Release && make install
 # Download config
 RUN mkdir -p /root/.config && \
@@ -23,19 +29,27 @@ RUN nvim --headless -c 'PackerSync' -c 'sleep 20' -c 'qa'
 RUN nvim --headless -c 'PackerSync'-c 'TSUpdate' -c 'sleep 60' -c 'qa'
 # Install LSP servers, skipping rust-analzyer (manual install later)
 RUN nvim --headless -c 'MasonInstall dockerfile-language-server json-lsp \
-  lua-language-server pyright yaml-language-server' -c 'sleep 20' -c 'qa'
+  lua-language-server pyright yaml-language-server \
+  powershell-editor-services' -c 'sleep 20' -c 'qa'
 
 ###############
 #  Container  #
 ###############
 
-FROM alpine:3.17.0
+FROM clowa/powershell-core
+SHELL ["/bin/bash", "-c"]
 # Apk dependencies
 ARG TARGETARCH
 ARG RUSTPATH
 # Runtime dependencies
-RUN apk add --no-cache --update fzf gettext git ripgrep npm nodejs curl && \
+RUN apt-get update -qq && \
+  apt-get install -qq --yes gettext git curl fzf ripgrep npm nodejs fzf \
+  unzip && \
+  apt-get clean -qq --yes && \
+  rm -rf /var/lib/apt/lists/* && \
   mkdir /project
+# RUN apk add --no-cache --update fzf gettext git ripgrep npm nodejs curl && \
+#   mkdir /project
 # Install Rust
 RUN curl https://sh.rustup.rs -sSf | sh -s -- -y
 # Include Rust on PATH
@@ -49,7 +63,8 @@ RUN case ${TARGETARCH} in \
   amd64) RUSTPATH=stable-x86_64-unknown-linux-musl ;; \
   *) exit 1 ;; \
   esac && \
-  ln -s /root/.rustup/toolchains/${RUSTPATH}/bin/rust-analzyer
+  ln -s /root/.rustup/toolchains/${RUSTPATH}/bin/rust-analzyer \
+  /root/.cargo/bin
 # Set default directory where volume will be mounted
 WORKDIR /project
 # Copy relevant files from build environment
