@@ -1,14 +1,14 @@
 #############
 #  Builder  #
 #############
-FROM alpine:3.17.0 AS builder
+FROM alpine:latest AS builder
 
 # Build dependencies
 RUN apk add --no-cache --update git gcc cmake make libtool autoconf automake ninja pkgconfig gettext gettext-dev musl-dev luajit g++ openssl luarocks unzip libintl wget
 # Build Neovim from source
 RUN git clone https://github.com/neovim/neovim
 WORKDIR /neovim
-RUN git checkout tags/v0.8.1
+RUN git checkout tags/v0.8.3
 RUN make CMAKE_BUILD_TYPE=Release && make install
 # Set up plugins lua file
 RUN mkdir -p /root/.config && git clone https://github.com/beezu/neovim-ide /root/.config/nvim
@@ -24,7 +24,7 @@ RUN nvim --headless -c 'TSUpdate' -c 'sleep 60' -c 'qa'
 ###############
 #  Container  #
 ###############
-FROM alpine:3.17.0
+FROM alpine:latest
 # App dependencies
 RUN apk add --no-cache --update fzf gettext git ripgrep && mkdir /project
 # Set default directory to where volume will be mounted
