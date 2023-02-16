@@ -22,15 +22,15 @@ RUN make CMAKE_BUILD_TYPE=Release && make install
 RUN mkdir -p /root/.config && \
   git clone https://github.com/beezu/neovim-ide /root/.config/nvim
 # Run PackerSync so it bootstraps
-RUN nvim --headless -c 'PackerSync' -c 'sleep 20' -c 'qa'
+RUN nvim --headless -c 'PackerSync' -c 'sleep 120' -c 'qa'
 # Rerun PackerSync to install remaining plugins
-RUN nvim --headless -c 'PackerSync' -c 'sleep 20' -c 'qa'
+RUN nvim --headless -c 'PackerSync' -c 'sleep 120' -c 'qa'
 # Set up TreeSitter
-RUN nvim --headless -c 'PackerSync'-c 'TSUpdate' -c 'sleep 60' -c 'qa'
+RUN nvim --headless -c 'PackerSync'-c 'TSUpdate' -c 'sleep 420' -c 'qa'
 # Install LSP servers, skipping rust-analzyer (manual install later)
 RUN nvim --headless -c 'MasonInstall dockerfile-language-server json-lsp \
   lua-language-server pyright yaml-language-server \
-  powershell-editor-services' -c 'sleep 20' -c 'qa'
+  powershell-editor-services' -c 'sleep 120' -c 'qa'
 
 ###############
 #  Container  #
