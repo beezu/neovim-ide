@@ -8,18 +8,19 @@ RUN apk add --no-cache --update git gcc cmake make libtool autoconf automake nin
 # Build Neovim from source
 RUN git clone https://github.com/neovim/neovim
 WORKDIR /neovim
-RUN git checkout tags/v0.8.3
+RUN git checkout tags/v0.9.1
 RUN make CMAKE_BUILD_TYPE=Release && make install
 # Set up plugins lua file
 RUN mkdir -p /root/.config && git clone https://github.com/beezu/neovim-ide /root/.config/nvim
 WORKDIR /root/.config/nvim
 RUN git checkout No_LSP
 # Run PackerSync
-RUN nvim --headless -c 'PackerSync' -c 'sleep 60' -c 'qa'
+RUN nvim --headless -c 'PackerSync' -c 'sleep 120' -c 'qa'
 # Rerun PackerSync to install remaining plugins
-RUN nvim --headless -c 'PackerSync' -c 'sleep 60' -c 'qa'
+RUN nvim --headless -c 'PackerSync' -c 'sleep 120' -c 'qa'
 # Set up TreeSitter
-RUN nvim --headless -c 'TSUpdate' -c 'sleep 420' -c 'qa'
+RUN nvim --headless -c 'TSUpdate' -c 'sleep 660' -c 'qa'
+RUN nvim --headless -c 'TSUpdate' -c 'sleep 120' -c 'qa'
 
 ###############
 #  Container  #
