@@ -16,7 +16,7 @@ RUN apt-get update -qq && \
 # Build Neovim from source
 RUN git clone https://github.com/neovim/neovim
 WORKDIR /neovim
-RUN git checkout tags/v0.8.3
+RUN git checkout tags/v0.9.1
 RUN make CMAKE_BUILD_TYPE=Release && make install
 # Download config
 RUN mkdir -p /root/.config && \
@@ -26,11 +26,11 @@ RUN nvim --headless -c 'PackerSync' -c 'sleep 120' -c 'qa'
 # Rerun PackerSync to install remaining plugins
 RUN nvim --headless -c 'PackerSync' -c 'sleep 120' -c 'qa'
 # Set up TreeSitter
-RUN nvim --headless -c 'PackerSync'-c 'TSUpdate' -c 'sleep 420' -c 'qa'
+RUN nvim --headless -c 'PackerSync' -c 'TSUpdate' -c 'sleep 600' -c 'qa'
 # Install LSP servers, skipping rust-analzyer (manual install later)
 RUN nvim --headless -c 'MasonInstall dockerfile-language-server json-lsp \
   lua-language-server pyright yaml-language-server \
-  powershell-editor-services' -c 'sleep 120' -c 'qa'
+  powershell-editor-services' -c 'sleep 300' -c 'qa'
 
 ###############
 #  Container  #
