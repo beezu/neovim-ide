@@ -188,10 +188,10 @@ return packer.startup(function(use)
     commit = "e9062e2dfb9854e6a927370f2d720de354c88524",
 	})
 
-	-- Telescope search --
-	--[[ use({ -- Telescope search ]]
-	--[[ 	"nvim-telescope/telescope.nvim", ]]
-	--[[ }) ]]
+	 -- Telescope search --
+	use({ -- Telescope search 
+		"nvim-telescope/telescope.nvim",
+	})
 
 	use({ -- Clipboard/Macro history, searchable with Telescope
 		"AckslD/nvim-neoclip.lua",
@@ -207,10 +207,10 @@ return packer.startup(function(use)
 		run = ":TSUpdate",
     commit = "ee107fc759647293a84ad42b867f518331364fbe",
 	})
-	use({ -- Rainbow parentheses for treesitter
-		"p00f/nvim-ts-rainbow",
-    commit = "ef95c15a935f97c65a80e48e12fe72d49aacf9b9",
-	})
+--	use({ -- Rainbow parentheses for treesitter
+--		"p00f/nvim-ts-rainbow",
+--    commit = "ef95c15a935f97c65a80e48e12fe72d49aacf9b9",
+--	})
 
 	-- Git --
 	use({ -- git decorations in nvim
