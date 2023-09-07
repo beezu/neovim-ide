@@ -22,6 +22,7 @@ keymap("n", "<leader>u", "<cmd>PackerSync<cr>", opts)
 keymap("n", "<leader>v", "<cmd>vsplit<cr>", opts)
 keymap("n", "<leader>z", "<cmd>lua require('cmp').setup.buffer {enabled = false }<cr>", opts)
 keymap("n", "<leader>Z", "<cmd>lua require('cmp').setup.buffer {enabled = true }<cr>", opts)
+keymap("n", "<leader>m", "<cmd>MarkdownPreview<cr>", opts)
 
 -- Modes
 --   normal_mode = "n",
