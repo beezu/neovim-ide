@@ -6,3 +6,4 @@ end
 require("bee.lsp.mason")
 require("bee.lsp.handlers").setup()
 require("bee.lsp.null-ls")
+require("bee.lsp.swift")

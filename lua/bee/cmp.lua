@@ -19,31 +19,31 @@ end
 
 --   פּ ﯟ   some other good icons
 local kind_icons = {
-	Text = "",
+	Text = "󰦨",
 	Method = "m",
-	Function = "",
+	Function = "󰊕",
 	Constructor = "",
 	Field = "",
-	Variable = "",
-	Class = "",
+	Variable = "󰫧",
+	Class = "",
 	Interface = "",
 	Module = "",
 	Property = "",
 	Unit = "",
-	Value = "",
+	Value = "󰫧",
 	Enum = "",
 	Keyword = "",
 	Snippet = "",
-	Color = "",
-	File = "",
+	Color = "",
+	File = "",
 	Reference = "",
-	Folder = "",
+	Folder = "",
 	EnumMember = "",
-	Constant = "",
+	Constant = "C",
 	Struct = "",
 	Event = "",
-	Operator = "",
-	TypeParameter = "",
+	Operator = "",
+	TypeParameter = "",
 }
 -- find more here: https://www.nerdfonts.com/cheat-sheet
 
@@ -109,6 +109,7 @@ cmp.setup({
 				buffer = "[Buffer]",
 				path = "[Path]",
 				crates = "[Rust]",
+        swift = "[Swift]",
 			})[entry.source.name]
 			return vim_item
 		end,
@@ -120,6 +121,7 @@ cmp.setup({
 		{ name = "buffer", priority = 4, max_item_count = 3 },
 		{ name = "path", priority = 1, max_item_count = 3 },
 		{ name = "crates", priority = 2, max_item_count = 5 },
+    { name = "swift", priority = 2, max_item_count = 5},
 	},
 	confirm_opts = {
 		behavior = cmp.ConfirmBehavior.Replace,
