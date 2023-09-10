@@ -5,7 +5,7 @@ require("bee.colorscheme")
 require("bee.cmp")
 require("bee.feline")
 require("bee.neoclip")
--- require "bee.telescope" -- required by neoclip already
+require("bee.telescope")
 require("bee.treesitter")
 require("bee.autopairs")
 require("bee.gitsigns")

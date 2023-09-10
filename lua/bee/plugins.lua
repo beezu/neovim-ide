@@ -183,10 +183,6 @@ return packer.startup(function(use)
 		run = ":TSUpdate",
 		commit = "e3ebc8ec5d586162f3c408417621daa59ba8ea62",
 	})
-	use({ -- Rainbow parentheses for treesitter
-		"p00f/nvim-ts-rainbow",
-		commit = "ef95c15a935f97c65a80e48e12fe72d49aacf9b9",
-	})
 
 	-- Git --
 	use({ -- git decorations in nvim
