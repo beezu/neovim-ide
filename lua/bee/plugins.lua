@@ -40,6 +40,7 @@ packer.init({
 
 -- Plugins
 return packer.startup(function(use)
+
 	-- Core --
 	use({ -- Have packer manage itself
 		"wbthomason/packer.nvim",
@@ -61,8 +62,6 @@ return packer.startup(function(use)
 		"akinsho/toggleterm.nvim",
     commit = "c80844fd52ba76f48fabf83e2b9f9b93273f418d",
 	})
-	-- use({ "lewis6991/impatient.nvim" }) -- Speeds up loading nvim lua modules
-	-- use({ "goolord/alpha-nvim" }) -- Greeter for nvim
 
 	-- Bufferline --
 	use({ -- Adds a buffer line at top of nvim, emulates GUI IDEs
@@ -73,6 +72,7 @@ return packer.startup(function(use)
 		"moll/vim-bbye",
     commit = "25ef93ac5a87526111f43e5110675032dbcacf56",
 	})
+
 	-- Theme --
 	use({
 		"EdenEast/nightfox.nvim",
@@ -99,28 +99,7 @@ return packer.startup(function(use)
 		end,
     commit = "a923f5fc5ba36a3b17e289dc35dc17f66d0548ee",
 	})
-	-- Completions and Linting --
-	-- Cmp
-	use({ -- The completion plugin
-		"hrsh7th/nvim-cmp",
-    commit = "5dce1b778b85c717f6614e3f4da45e9f19f54435",
-	})
-	use({ -- buffer completions
-		"hrsh7th/cmp-buffer",
-    commit = "3022dbc9166796b644a841a02de8dd1cc1d311fa",
-	})
-	use({ -- path completions
-		"hrsh7th/cmp-path",
-    commit = "91ff86cd9c29299a64f968ebb45846c485725f23",
-	})
-	use({ -- cmdline completions
-		"hrsh7th/cmp-cmdline",
-    commit = "8ee981b4a91f536f52add291594e89fb6645e451",
-	})
-	use({ -- snippet completions
-		"saadparwaiz1/cmp_luasnip",
-    commit = "05a9ab28b53f71d1aece421ef32fee2cb857a843",
-	})
+
 	use({ -- for lsp
 		"hrsh7th/cmp-nvim-lsp",
     commit = "44b16d11215dce86f253ce0c30949813c0a90765",
@@ -140,16 +119,6 @@ return packer.startup(function(use)
 	use({ -- Autopairs, integrates with both cmp and treesitter
 		"windwp/nvim-autopairs",
     commit = "f6c71641f6f183427a651c0ce4ba3fb89404fa9e",
-	})
-
-	-- Snippets
-	use({ --snippet engine
-		"L3MON4D3/LuaSnip",
-    commit = "0df29db3543837f8b41597f2640397c5ec792b7b",
-	})
-	use({ -- a bunch of snippets to use
-		"rafamadriz/friendly-snippets",
-    commit = "43727c2ff84240e55d4069ec3e6158d74cb534b6",
 	})
 
 	-- LSP

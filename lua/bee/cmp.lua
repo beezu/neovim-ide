@@ -109,7 +109,7 @@ cmp.setup({
 				buffer = "[Buffer]",
 				path = "[Path]",
 				crates = "[Rust]",
-        swift = "[Swift]",
+				swift = "[Swift]",
 			})[entry.source.name]
 			return vim_item
 		end,
@@ -121,7 +121,7 @@ cmp.setup({
 		{ name = "buffer", priority = 4, max_item_count = 3 },
 		{ name = "path", priority = 1, max_item_count = 3 },
 		{ name = "crates", priority = 2, max_item_count = 5 },
-    { name = "swift", priority = 2, max_item_count = 5},
+		{ name = "swift", priority = 2, max_item_count = 5 },
 	},
 	confirm_opts = {
 		behavior = cmp.ConfirmBehavior.Replace,
@@ -136,4 +136,11 @@ cmp.setup({
 		ghost_text = false,
 		native_menu = false,
 	},
+})
+
+-- Disable autostart of CMP
+vim.api.nvim_create_autcmd("VimEnter", {
+  callback = function()
+    vim.cmd("lua require('cmp').setup { enabled = false }")
+  end,
 })
