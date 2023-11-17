@@ -8,7 +8,7 @@ if fn.empty(fn.glob(install_path)) > 0 then
 		"clone",
 		"--depth",
 		"1",
-		"https://github.com/wbthomason/packer.nvim",
+		"wbthomason/packer.nvim",
 		install_path,
 	})
 	print("Installing packer, close and reopen Neovim...")
@@ -43,29 +43,29 @@ packer.init({
 return packer.startup(function(use)
 	-- Core --
 	use({ -- Have packer manage itself
-		"https://github.com/wbthomason/packer.nvim",
+		"wbthomason/packer.nvim",
 		commit = "ea0cc3c59f67c440c5ff0bbe4fb9420f4350b9a3",
 	})
 	use({ -- Useful lua functions used by lots of plugins
-		"https://github.com/nvim-lua/plenary.nvim",
+		"nvim-lua/plenary.nvim",
 		commit = "50012918b2fc8357b87cff2a7f7f0446e47da174",
 	})
 	use({ -- Allows plugins to use popups instead of splits
-		"https://github.com/nvim-lua/popup.nvim",
+		"nvim-lua/popup.nvim",
 		commit = "b7404d35d5d3548a82149238289fa71f7f6de4ac",
 	})
 	use({ -- Lua-based file explorer
-		"https://github.com/nvim-tree/nvim-tree.lua",
+		"nvim-tree/nvim-tree.lua",
 		commit = "80cfeadf179d5cba76f0f502c71dbcff1b515cd8",
 	})
 	use({ -- Allows persistent and toggle-able terminals within nvim
-		"https://github.com/akinsho/toggleterm.nvim",
+		"akinsho/toggleterm.nvim",
 		commit = "c80844fd52ba76f48fabf83e2b9f9b93273f418d",
 	})
 
 	-- Bufferline --
 	use({ -- Adds a buffer line at top of nvim, emulates GUI IDEs
-		"https://github.com/akinsho/bufferline.nvim",
+		"akinsho/bufferline.nvim",
 		commit = "9e8d2f695dd50ab6821a6a53a840c32d2067a78a",
 	})
 	use({ -- Buffer Bye, it removes buffers intelligently and gives user options to do so as well
@@ -75,7 +75,7 @@ return packer.startup(function(use)
 
 	-- Theme --
 	use({
-		"https://github.com/EdenEast/nightfox.nvim",
+		"EdenEast/nightfox.nvim",
 		commit = "6a6076bd678f825ffbe16ec97807793c3167f1a7",
 	})
 
@@ -87,31 +87,31 @@ return packer.startup(function(use)
 
 	-- Characters
 	use({ -- Adds NerdFont devicon support to Vim for plugins like treesitter to use. Lua fork of Ryanoasis
-		"https://github.com/nvim-tree/nvim-web-devicons",
+		"nvim-tree/nvim-web-devicons",
 		commit = "3523d6e6d40ab11fd66c1b2732b3d6b60affa951",
 	})
 
 	-- Misc
 	use({ -- Auto indents lines, even blank ones
-		"https://github.com/lukas-reineke/indent-blankline.nvim",
+		"lukas-reineke/indent-blankline.nvim",
 		commit = "29be0919b91fb59eca9e90690d76014233392bef",
 	})
 	use({ -- Smart commenting
-		"https://github.com/numToStr/Comment.nvim",
+		"numToStr/Comment.nvim",
 		commit = "0236521ea582747b58869cb72f70ccfa967d2e89",
 	})
 	use({ -- Companion to Comment plugin, sets code language based on context so you can use different comment styles within the same file, based on what's being commented
-		"https://github.com/JoosepAlviste/nvim-ts-context-commentstring",
+		"JoosepAlviste/nvim-ts-context-commentstring",
 		commit = "6c30f3c8915d7b31c3decdfe6c7672432da1809d",
 	})
 
 	-- Telescope search --
 	use({ -- Telescope search
-		"https://github.com/nvim-telescope/telescope.nvim",
+		"nvim-telescope/telescope.nvim",
 		commit = "18774ec7929c8a8003a91e9e1f69f6c32258bbfe",
 	})
 	use({ -- Clipboard/Macro history, searchable with Telescope
-		"https://github.com/AckslD/nvim-neoclip.lua",
+		"AckslD/nvim-neoclip.lua",
 		config = function()
 			require("neoclip").setup()
 		end,
@@ -120,14 +120,14 @@ return packer.startup(function(use)
 
 	-- Treesitter --
 	use({ -- better highlighting
-		"https://github.com/nvim-treesitter/nvim-treesitter",
+		"nvim-treesitter/nvim-treesitter",
 		run = ":TSUpdate",
 		commit = "557561fbc17269cdd4e9e88ef0ca1a9ff0bbf7e6",
 	})
 
 	-- Git --
 	use({ -- git decorations in nvim
-		"https://github.com/lewis6991/gitsigns.nvim",
+		"lewis6991/gitsigns.nvim",
 		commit = "37d26d718f8120a8c5c107c580c8c98cf89fdf1f",
 	})
 	-- Automatically set up your configuration after cloning packer.nvim
