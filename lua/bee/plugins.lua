@@ -8,7 +8,7 @@ if fn.empty(fn.glob(install_path)) > 0 then
 		"clone",
 		"--depth",
 		"1",
-		"wbthomason/packer.nvim",
+		"https://github.com/wbthomason/packer.nvim",
 		install_path,
 	})
 	print("Installing packer, close and reopen Neovim...")
