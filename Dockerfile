@@ -48,6 +48,8 @@ RUN apt-get update -qq && \
   apt-get clean -qq --yes && \
   rm -rf /var/lib/apt/lists/* && \
   mkdir /project
+# RUN apk add --no-cache --update fzf gettext git ripgrep npm nodejs curl && \
+#   mkdir /project
 # Install Rust
 RUN curl https://sh.rustup.rs -sSf | sh -s -- -y
 # Include Rust on PATH
