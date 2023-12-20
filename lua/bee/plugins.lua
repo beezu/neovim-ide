@@ -78,10 +78,14 @@ return packer.startup(function(use)
 	})
 
 	-- Statusline --
-	use({
-		"freddiehaddad/feline.nvim",
-    commit = "62a9f4fd4fcf46cb87b7868323a1e9aef5b08028",
-	})
+  use({
+    "nvim-lualine/lualine.nvim",
+    requires = { 'nvim-tree/nvim-web-devicons', opt = true },
+  })
+	--[[ use({ ]]
+	--[[ 	"freddiehaddad/feline.nvim", ]]
+ --[[    commit = "62a9f4fd4fcf46cb87b7868323a1e9aef5b08028", ]]
+	--[[ }) ]]
 
 	-- Characters
 	use({ -- Adds NerdFont devicon support to Vim for plugins like treesitter to use. Lua fork of Ryanoasis
