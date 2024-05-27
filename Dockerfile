@@ -16,7 +16,7 @@ RUN apt-get update -qq && \
 # Build Neovim from source
 RUN git clone https://github.com/neovim/neovim
 WORKDIR /neovim
-RUN git checkout tags/v0.9.4
+RUN git checkout tags/v0.10.0
 RUN make CMAKE_BUILD_TYPE=Release && make install
 # Download config
 RUN mkdir -p /root/.config && \
