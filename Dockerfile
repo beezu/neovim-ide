@@ -4,23 +4,22 @@
 FROM alpine:latest AS builder
 
 # Build dependencies
-RUN apk add --no-cache --update git gcc cmake make libtool autoconf automake ninja pkgconfig gettext gettext-dev musl-dev luajit g++ openssl luarocks unzip libintl wget
+RUN apk add --no-cache --update git gcc cmake make libtool autoconf automake \
+  ninja pkgconfig gettext gettext-dev musl-dev luajit g++ openssl luarocks \
+  unzip libintl wget
 # Build Neovim from source
 RUN git clone https://github.com/neovim/neovim
 WORKDIR /neovim
-RUN git checkout tags/v0.9.4
+RUN git checkout tags/v0.10.0
 RUN make CMAKE_BUILD_TYPE=Release && make install
 # Set up plugins lua file
-RUN mkdir -p /root/.config && git clone https://github.com/beezu/neovim-ide /root/.config/nvim
+RUN mkdir -p /root/.config && \
+  git clone https://github.com/beezu/neovim-ide /root/.config/nvim
 WORKDIR /root/.config/nvim
 RUN git checkout No_LSP
-# Run PackerSync
-RUN nvim --headless -c 'PackerSync' -c 'sleep 40' -c 'qa'
-# Rerun PackerSync to install remaining plugins
-RUN nvim --headless -c 'PackerSync' -c 'sleep 40' -c 'qa'
-# Set up TreeSitter
-RUN nvim --headless -c 'TSUpdate' -c 'sleep 120' -c 'qa'
-RUN nvim --headless -c 'TSUpdate' -c 'sleep 120' -c 'qa'
+# Run Lazy so it bootstraps, install TreeSitter
+RUN nvim --headless -c "Lazy! sync" -c "TSUpdate" -c 'sleep 60' +qa
+RUN nvim --headless -c "Lazy! sync" -c "TSUpdate" -c 'sleep 40' +qa
 
 ###############
 #  Container  #

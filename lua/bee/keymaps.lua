@@ -20,7 +20,6 @@ keymap("n", "<leader>H", "<cmd>lua _HTOP_TOGGLE()<cr>", opts)
 keymap("n", "<leader>h", "<cmd>split<cr>", opts)
 keymap("n", "<leader>n", "<cmd>lua vim.lsp.buf.format()<cr>", opts)
 keymap("n", "<leader>t", "<cmd>tabnew<cr>", opts)
-keymap("n", "<leader>u", "<cmd>PackerSync<cr>", opts)
 keymap("n", "<leader>v", "<cmd>vsplit<cr>", opts)
 
 -- Modes
