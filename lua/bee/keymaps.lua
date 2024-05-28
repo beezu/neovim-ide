@@ -9,18 +9,20 @@ local keymap = vim.api.nvim_set_keymap
 -- keymap("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = ","
 vim.g.maplocalleader = ","
-
--- Leader keys
+-- [[ Leader keys ]] --
 keymap("n", "<leader>a", "<cmd>Telescope live_grep<cr>", opts)
 keymap("n", "<leader>b", "<cmd>Bdelete!<cr>", opts)
 keymap("n", "<leader>c", "<cmd>lua require('telescope').extensions.neoclip.default()<cr>", opts)
 keymap("n", "<leader>d", "<cmd>NvimTreeToggle<cr>", opts)
 keymap("n", "<leader>f", "<cmd>Telescope find_files<cr>", opts)
-keymap("n", "<leader>H", "<cmd>lua _HTOP_TOGGLE()<cr>", opts)
 keymap("n", "<leader>h", "<cmd>split<cr>", opts)
 keymap("n", "<leader>n", "<cmd>lua vim.lsp.buf.format()<cr>", opts)
 keymap("n", "<leader>t", "<cmd>tabnew<cr>", opts)
+keymap("n", "<leader>u", "<cmd>PackerSync<cr>", opts)
 keymap("n", "<leader>v", "<cmd>vsplit<cr>", opts)
+keymap("n", "<leader>z", "<cmd>lua require('cmp').setup.buffer {enabled = false }<cr>", opts)
+keymap("n", "<leader>Z", "<cmd>lua require('cmp').setup.buffer {enabled = true }<cr>", opts)
+keymap("n", "<leader>m", "<cmd>MarkdownPreview<cr>", opts)
 
 -- Modes
 --   normal_mode = "n",
@@ -36,20 +38,6 @@ keymap("n", "<C-h>", "<C-w>h", opts)
 keymap("n", "<C-j>", "<C-w>j", opts)
 keymap("n", "<C-k>", "<C-w>k", opts)
 keymap("n", "<C-l>", "<C-w>l", opts)
-
--- Rebind arrow keys
--- keymap("n", "j", "h", opts)
--- keymap("n", "k", "k", opts)
--- keymap("n", "l", "j", opts)
--- keymap("n", ";", "l", opts)
--- keymap("n", "h", "<Nop>", opts)
-
--- Better window navigation, modified arrows
--- keymap("n", "<C-j>", "<C-w>h", opts)
--- keymap("n", "<C-l>", "<C-w>j", opts)
--- keymap("n", "<C-k>", "<C-w>k", opts)
--- vim.cmd "nnoremap \\[1;5Q <C-w>l" -- lua method broke after setting up. Fixed for now, but leaving this version in case issues return
--- keymap("n", "\\[1;5Q", "<C-w>l", opts)   -- Bound terminal to treat ctrl+semicolon as ctrl+f2
 
 -- Resize with arrows
 keymap("n", "<C-Up>", ":resize +2<CR>", opts)
@@ -72,14 +60,6 @@ keymap("i", "jj", "<ESC>", opts)
 -- Command --
 -- Exit command mode with jj
 keymap("c", "jj", "<ESC>", opts)
-
--- Visual --
--- Rebind arrow keys
--- keymap("v", "j", "h", opts)
--- keymap("v", "k", "k", opts)
--- keymap("v", "l", "j", opts)
--- keymap("v", ";", "l", opts)
--- keymap("v", "h", "<Nop>", opts)
 
 -- Stay in indent mode
 keymap("v", "<", "<gv", opts)
