@@ -28,6 +28,9 @@ require("lazy").setup({
 		"akinsho/toggleterm.nvim",
 		cmd = { "ToggleTerm" },
 	},
+	{ -- undo history browser
+		"mbbill/undotree",
+	},
 
 	-- Bufferline --
 	{ -- Adds a buffer line at top of nvim, emulates GUI IDEs
