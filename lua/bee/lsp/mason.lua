@@ -6,7 +6,6 @@ local servers = {
 	"pyright",
 	-- "bashls",
 	"jsonls",
-	-- "yamlls",
 	"rust_analyzer",
 	"powershell_es",
 	"yamlls",

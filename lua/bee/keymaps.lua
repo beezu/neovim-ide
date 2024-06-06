@@ -18,7 +18,6 @@ keymap("n", "<leader>f", "<cmd>Telescope find_files<cr>", opts)
 keymap("n", "<leader>h", "<cmd>split<cr>", opts)
 keymap("n", "<leader>n", "<cmd>lua vim.lsp.buf.format()<cr>", opts)
 keymap("n", "<leader>t", "<cmd>tabnew<cr>", opts)
-keymap("n", "<leader>u", "<cmd>PackerSync<cr>", opts)
 keymap("n", "<leader>v", "<cmd>vsplit<cr>", opts)
 keymap("n", "<leader>z", "<cmd>lua require('cmp').setup.buffer {enabled = false }<cr>", opts)
 keymap("n", "<leader>Z", "<cmd>lua require('cmp').setup.buffer {enabled = true }<cr>", opts)
@@ -79,9 +78,7 @@ keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
 keymap("x", "<A-j>", ":move '>+1<CR>gv-gv", opts)
 keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 
--- Terminal --
--- Better terminal navigation
--- keymap("t", "<C-h>", "<C-\\><C-N><C-w>h", term_opts)
--- keymap("t", "<C-j>", "<C-\\><C-N><C-w>j", term_opts)
--- keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
--- keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
+-- Treesitter Context bind --
+vim.keymap.set("n", "<leader>g", function()
+  require("treesitter-context").go_to_context(vim.v.count1)
+end, { silent = true })

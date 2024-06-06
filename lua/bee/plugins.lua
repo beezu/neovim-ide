@@ -148,6 +148,10 @@ require("lazy").setup({
 		"nvim-treesitter/nvim-treesitter",
 		run = ":TSUpdate",
 	},
+  -- Context in code blocks --
+  {
+    "nvim-treesitter/nvim-treesitter-context",
+  },
 
 	-- Git --
 	{ -- git decorations in nvim

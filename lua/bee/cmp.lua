@@ -110,6 +110,7 @@ cmp.setup({
 				path = "[Path]",
 				crates = "[Rust]",
         swift = "[Swift]",
+        python = "[pyright]",
 			})[entry.source.name]
 			return vim_item
 		end,
@@ -122,6 +123,7 @@ cmp.setup({
 		{ name = "path", priority = 1, max_item_count = 3 },
 		{ name = "crates", priority = 2, max_item_count = 5 },
     { name = "swift", priority = 2, max_item_count = 5},
+    { name = "pyright", priority = 2, max_item_count = 5},
 	},
 	confirm_opts = {
 		behavior = cmp.ConfirmBehavior.Replace,

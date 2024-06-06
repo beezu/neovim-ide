@@ -21,16 +21,12 @@ RUN make CMAKE_BUILD_TYPE=Release && make install
 # Download config
 RUN mkdir -p /root/.config && \
   git clone https://github.com/beezu/neovim-ide /root/.config/nvim
-# Run PackerSync so it bootstraps
-RUN nvim --headless -c 'PackerSync' -c 'sleep 40' -c 'qa'
-# Rerun PackerSync to install remaining plugins
-RUN nvim --headless -c 'PackerSync' -c 'sleep 40' -c 'qa'
-# Set up TreeSitter
-RUN nvim --headless -c 'PackerSync' -c 'TSUpdate' -c 'sleep 120' -c 'qa'
+# Run Lazy so it bootstraps, install TreeSitter
+RUN nvim --headless -c "Lazy! sync" -c "TSUpdate" -c 'sleep 60' +qa
 # Install LSP servers, skipping rust-analzyer (manual install later)
-RUN nvim --headless -c 'MasonInstall dockerfile-language-server json-lsp \
-  lua-language-server pyright yaml-language-server \
-  powershell-editor-services' -c 'sleep 120' -c 'qa'
+RUN nvim --headless -c "Lazy! sync" -c "TSUpdate" -c 'MasonInstall \
+  dockerfile-language-server json-lsp lua-language-server pyright \
+  yaml-language-server powershell-editor-services' -c 'sleep 40' +qa
 
 ###############
 #  Container  #
@@ -48,8 +44,6 @@ RUN apt-get update -qq && \
   apt-get clean -qq --yes && \
   rm -rf /var/lib/apt/lists/* && \
   mkdir /project
-# RUN apk add --no-cache --update fzf gettext git ripgrep npm nodejs curl && \
-#   mkdir /project
 # Install Rust
 RUN curl https://sh.rustup.rs -sSf | sh -s -- -y
 # Include Rust on PATH
