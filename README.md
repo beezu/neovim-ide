@@ -1,4 +1,13 @@
 # Neovim-IDE
-This project was heavily inspired by [Neovim From Scratch](https://github.com/LunarVim/Neovim-from-scratch) and much of the code here is either from that project or at least based upon it.
 
-I include a Dockerfile for my build, and images are published in X64 and ARM64 on [Docker Hub](https://hub.docker.com/repository/docker/beezu/neovim).
+My config was originally based on [Neovim From Scratch](https://github.com/LunarVim/Neovim-from-scratch). During a major refactor, [The Primeagen's neovimrc repo](https://github.com/ThePrimeagen/neovimrc) served as inspiration for the config structure, and some of his configuration was used in mine as well.
+
+Languages/filetypes that this config's LSP supports out of the box:
+- Dockerfile
+- gdscript (supported but needs to be installed from Mason)
+- Lua (and Love2D)
+- PowerShell
+- Python
+- Rust
+- Swift (note: requires XCode to be installed)
+- yaml
