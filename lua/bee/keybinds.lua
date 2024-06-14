@@ -1,6 +1,5 @@
 local opts = { noremap = true, silent = true }
 local keymap = vim.api.nvim_set_keymap
-local vkeymap = vim.keymap.set
 
 -- Map leader key
 vim.g.mapleader = " "

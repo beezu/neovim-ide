@@ -1,6 +1,10 @@
 require("bee.keybinds")
 require("bee.lazy_init")
 
+local autocmd = vim.api.nvim_create_autocmd
+local augroup = vim.api.nvim_create_augroup
+local general = augroup("General", { clear = true })
+
 local options = {
 	backup = false, -- creates a backup file
 	clipboard = "unnamedplus", -- allows neovim to access the system clipboard
@@ -44,17 +48,27 @@ end
 
 vim.opt.shortmess:append("c") -- don't give |ins-completion-menu| messages
 vim.opt.iskeyword:append("-") -- hyphenated words recognized by searches
-vim.opt.formatoptions:remove({ "c", "r", "o" }) -- don't insert the current comment leader automatically for auto-wrapping comments using 'textwidth', hitting <Enter> in insert mode, or hitting 'o' or 'O' in normal mode.
 vim.opt.runtimepath:remove("/usr/share/vim/vimfiles") -- separate vim plugins from neovim in case vim still in use
 
 -- Disable unused providers
 vim.g.loaded_perl_provider = 0
 
+-- AUTOCMDS --
+
 -- Highlight when yanking text
-vim.api.nvim_create_autocmd("TextYankPost", {
+autocmd("TextYankPost", {
   desc = "Highlight when yanking text",
-  group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
+  group = general,
   callback = function ()
     vim.highlight.on_yank()
   end,
+})
+
+-- Prevent auto commenting on newline (done as autocmd since declaring normally wasn't working)
+autocmd("BufEnter", {
+  callback = function()
+    vim.opt.formatoptions:remove { "c", "r", "o" }
+  end,
+  group = general,
+  desc = "Disable New Line Comment",
 })
