@@ -5,13 +5,18 @@ return {
     cmd = "Trouble",
     keys = {
       {
-        "<leader>t",
+        "<leader>tt",
         "<cmd>Trouble diagnostics toggle win.position=right<cr>",
         desc = "Diagnostics (Trouble)",
       },
       {
-        "<leader>tt",
+        "<leader>tn",
         "<cmd>Trouble diagnostics toggle next jump=true<cr>",
+        desc = "Diagnostics (Trouble)",
+      },
+      {
+        "<leader>tp",
+        "<cmd>Trouble diagnostics toggle prev jump=true<cr>",
         desc = "Diagnostics (Trouble)",
       },
     },
