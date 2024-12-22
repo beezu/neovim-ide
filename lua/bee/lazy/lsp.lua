@@ -87,11 +87,13 @@ return {
                     "describe",
                     "before_each",
                     "after_each",
+                    "hs",
                   },
                 },
                 workspace = {
                   library = {
                     "{$3rd}/love2d/library",
+                    "/Users/bee/hammerspoon/Spoons/EmmyLua.spoon/annotations",
                   },
                   checkThirdParty = { false },
                 },

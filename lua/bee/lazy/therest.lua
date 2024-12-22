@@ -19,4 +19,7 @@ return {
 
   -- undo history browser
   "mbbill/undotree",
+
+  -- crystal context highlighting
+  "jlcrochet/vim-crystal",
 }
